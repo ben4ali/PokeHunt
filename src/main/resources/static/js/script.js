@@ -626,22 +626,29 @@ const player = document.getElementById("playerCharacterSprite")
 
 let SPEED = 15
 let walking = false
+let direction = "front"
 
 document.addEventListener("keyup", (e)=>{
 
     if (e.key==="w"){
-        player.src = "../assets/images/frontIdle.png"
+        direction="front"
+        player.lastElementChild.src = "../assets/images/frontIdle.png"
     }
     if (e.key==="s"){
-        player.src = "../assets/images/backIdle.png"
+        direction="back"
+        player.lastElementChild.src = "../assets/images/backIdle.png"
     }
     if (e.key==="a"){
-        player.src = "../assets/images/leftIdle.png"
+        direction="left"
+        player.lastElementChild.src = "../assets/images/leftIdle.png"
     }
     if (e.key==="d"){
-        player.src = "../assets/images/rightIdle.png"
+        direction="right"
+        player.lastElementChild.src = "../assets/images/rightIdle.png"
     }
-    walking = false
+    setTimeout(()=>{
+        walking = false
+    },500)
 })
 
 
