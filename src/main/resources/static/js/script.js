@@ -52,7 +52,7 @@ const SHINY_ODDS = 2
 const ENCOUNTER_ODDS = 100
 
 //VARIABLES
-let encounter = false
+let encounter = true
 
 
 
@@ -644,87 +644,7 @@ document.addEventListener("keyup", (e)=>{
     walking = false
 })
 
-document.addEventListener("keydown", (e)=>{
-    if (encounter){
-        return
-    }
-    if (e.key==="w"){
 
-        if (map.firstElementChild.style.transform.split(",")[1] != undefined){
-            if (parseInt(map.firstElementChild.style.transform.split(",")[1].split("px")[0])+SPEED>=800){
-                SPEED = 0
-            }else{
-                SPEED = 25
-            }
-        }
-        gsap.set(map.firstElementChild,{
-            y: "+="+SPEED,
-        })
-        if (walking==false){
-            player.src = "../assets/images/frontWalk.gif"
-        }
-    }
-    if (e.key==="s"){
-
-        if (map.firstElementChild.style.transform.split(",")[1] != undefined){
-            if (parseInt(map.firstElementChild.style.transform.split(",")[1].split("px")[0])+SPEED<=-1180){
-                SPEED = 0
-            }else{
-                SPEED = 25
-            }
-        }
-
-        gsap.set(map.firstElementChild,{
-            y: "-="+SPEED,
-        })
-        if (walking==false){
-            player.src = "../assets/images/backWalk.gif"
-        }
-
-    }
-    if (e.key==="a"){
-
-        if (map.firstElementChild.style.transform.split(",")[0] != undefined){
-            if (parseInt(map.firstElementChild.style.transform.split(",")[0].split("px")[0].split("(")[1])+SPEED>=1215){
-                SPEED = 0
-            }else{
-                SPEED = 25
-            }
-        }
-
-        gsap.set(map.firstElementChild,{
-            x: "+="+SPEED,
-        })
-        if (walking==false){
-            player.src = "../assets/images/leftWalk.gif"
-        }
-
-    }
-    if (e.key==="d"){
-
-        if (map.firstElementChild.style.transform.split(",")[0] != undefined){
-            if (parseInt(map.firstElementChild.style.transform.split(",")[0].split("px")[0].split("(")[1])+SPEED<=-1950){
-                SPEED = 0
-            }else{
-                SPEED = 25
-            }
-        }
-
-        gsap.set(map.firstElementChild,{
-            x: "-="+SPEED,
-        })
-        if (walking==false){
-            player.src = "../assets/images/rightWalk.gif"
-        }
-    }
-    walking = true
-
-    let randomPlayer = getRandomInt(ENCOUNTER_ODDS)
-    if (randomPlayer==1){
-        console.log("Encounter")
-        transition()
-    }
-})
 
 
 

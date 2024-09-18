@@ -31,11 +31,46 @@ body{
     background-color: black;
 }
 
-
+/*------FORM INPUT------------*/
+.userForm{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 95vh;
+    gap: 2rem;
+}
+.userForm p{
+    font-size: 40px;
+    margin: 0;
+    color: rgb(251, 251, 207);
+    text-shadow: 3px 3px #6c6b62b9;
+    letter-spacing: 3px;
+}
+.userForm input{
+    width: 25rem;
+    height: 3rem;
+    padding-inline: 1rem;
+    border-radius: 25px;
+    border: 5px solid #239382;
+    color: white;
+    text-shadow: none;
+    letter-spacing: 2px;
+    font-family: Pokemon_Font;
+    font-size: 25px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.userForm input:focus{
+    outline: none;
+    width: 28rem;
+    transition: 0.25s;
+}
 
 /*------OVERWORLD SCENE-------*/
 #overworld{
-    /* display: none; */
+    opacity: 0;
+    display: none;
     width: 90%;
     min-width: 1440px;
     margin: 0 auto;

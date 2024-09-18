@@ -28,11 +28,14 @@ public class WebSocketEventListener {
         String username = (String) headerAccessor.getSessionAttributes().get("username");
         if (username != null){
             log.info("User disconnected :  {}",username);
+
             var playerPosition = PlayerPosition.builder()
                     .type(MessageType.LEAVE)
                     .username(username)
                     .build();
             messageTemplate.convertAndSend("/topic/public",playerPosition);
+
+
         }
     }
 }
