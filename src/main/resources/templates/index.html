@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Poké Hunt</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/TextPlugin.min.js"></script>
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <audio id="mainMusic" src="assets/audios/route_music.mp3" loop autoplay></audio>
+    <audio id="encounterMusic" src="assets/audios/encounter_music.mp3"></audio>
+    <audio id="shinySound" src="assets/audios/shiny_audi.mp3"></audio>
+    
+    <!--TRANSITION FRAME-->
+    <div class="transitionFrame">
+        <div>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+
+    </div>
+
+    <!--OVERWORLD-->
+    <section id="overworld">
+        <div class="map">
+            <img src="assets/images/grass_map.png" alt="">
+            <img id="playerCharacterSprite" src="assets/images/frontIdle.png" alt="">
+        </div>
+    </section>
+    
+
+    <section id="pokeBattle">
+        <div id="ennemyS" class="side">
+            <div class="menu">
+                <div class="pokemonInfo">
+                    <p id="ennemyPkmName"></p>
+                    <div class="pokInfo">
+                        <p>Lv.50</p>
+                    </div>
+                </div>
+                <div class="hpHolder">
+                    <div class="hpBar"></div>
+                </div>
+
+                <img src="assets/images/pokemon_menu.png" alt="">
+            </div>
+            <div class="sprite">
+                <img src="" alt="">
+                <img id="shinySparkle" src="assets/images/sparkle_pkm.gif" alt="">
+            </div>
+            <div class="grass">
+                <img src="assets/images/pokemon_grass.png" alt="">
+            </div>
+        </div>
+
+        <div id="playerS" class="side">
+            <div class="menu">
+                <div class="pokemonInfo">
+                    <p id="playerPkmName">Solosis</p>
+                    <div class="pokInfo">
+                        <p>Lv.50</p>
+                    </div>
+                </div>
+                <div class="hpHolder">
+                    <div class="hpBar"></div>
+                </div>
+                <img src="assets/images/pokemon_menu_player.png" alt="">
+            </div>
+            <div class="sprite">
+                <img src="" alt="">
+            </div>
+            <div class="grass">
+                <img src="assets/images/pokemon_grass.png" alt="">
+            </div>
+
+        </div>
+        
+        <div class="options">
+            <img id="dialogWindow" src="assets/images/pkm_dialog.png" alt="">
+            <p id="dialogText"></p>
+            
+            <div class="optionBtnHolder">
+                <button class="fight">FIGHT</button>
+                <button class="bag">BAG</button>
+                <button class="pokBtn">POKÉMON</button>
+                <button class="run">RUN</button>
+            </div>
+            <div class="fightBtnHolder">
+                <div class="btnHolder">
+                    <button>UNDEFINED</button>
+                    <button>UNDEFINED</button>
+                    <button>UNDEFINED</button>
+                    <button>UNDEFINED</button>
+                </div>
+                <div class="moveInformation">
+                    <p id="powerInfo">POWER:</p>
+                    <p id="typeInfo">TYPE:</p>
+                    <p id="backBtn">BACK</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</body>
+</html>
