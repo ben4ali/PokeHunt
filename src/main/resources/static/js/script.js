@@ -49,7 +49,7 @@ const POKEMONS_MAX = 649
 const DURATION = 1
 const DELAY = 0.1
 const SHINY_ODDS = 2
-const ENCOUNTER_ODDS = 10000 //by default 100
+const ENCOUNTER_ODDS = 100 //by default 100
 
 //VARIABLES
 let encounter = true
