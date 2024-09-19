@@ -37,7 +37,7 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 12%;
+    margin-top: 4%;
     gap: 1rem;
 }
 .userForm{
@@ -82,12 +82,12 @@ body{
     width: 28rem;
     transition: 0.25s;
 }
-.pokemonChoiceHolder{
+.pokemonChoiceHolder,.characterPicker{
     display: flex;
     gap: 3rem;
     justify-content: center;
 }
-.choicePok{
+.choicePok,.characterCell{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -103,7 +103,7 @@ body{
     gap: 1rem;
     box-shadow: 5px 5px 0 3px #3ddec6;
 }
-.choicePok p{
+.choicePok p,.characterCell p{
     color: rgb(122, 118, 97);
     font-size: 20px;
     text-shadow: none;
@@ -111,17 +111,17 @@ body{
     letter-spacing: 2px;
     margin: 0;
 }
-.choicePok img{
-    object-fit: cover;
+.choicePok img,.characterCell img{
+    object-fit: contain;
     height: 50%;
     width: 50%;
 }
-.choicePok:hover{
+.choicePok:hover,.characterCell:hover{
     box-shadow:0px 0px 0 3px #3ddec6;
     transition: 0.1s;
     transform: translate(5px,5px);
 }
-.selectedPok{
+.selectedPok,.selectCharmodel{
     border: 5px solid #deea9b;
     box-shadow:0px 0px 0 3px #3ddec6;
     transition: 0.1s;

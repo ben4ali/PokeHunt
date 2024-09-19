@@ -92,7 +92,7 @@ function sendPosition(event) {
         })
         offsetY+=SPEED
         if (walking==false){
-            player.lastElementChild.src = "../assets/images/frontWalk.gif"
+            player.lastElementChild.src = "../assets/images/"+character_name+"FrontWalk.gif"
         }
     }
     if (event.key==="s"){
@@ -110,7 +110,7 @@ function sendPosition(event) {
         })
         offsetY-=SPEED
         if (walking==false){
-            player.lastElementChild.src = "../assets/images/backWalk.gif"
+            player.lastElementChild.src = "../assets/images/"+character_name+"BackWalk.gif"
         }
 
     }
@@ -128,7 +128,7 @@ function sendPosition(event) {
         })
         offsetX+=SPEED
         if (walking==false){
-            player.lastElementChild.src = "../assets/images/leftWalk.gif"
+            player.lastElementChild.src = "../assets/images/"+character_name+"LeftWalk.gif"
         }
 
     }
@@ -147,7 +147,7 @@ function sendPosition(event) {
         })
         offsetX-=SPEED
         if (walking==false){
-            player.lastElementChild.src = "../assets/images/rightWalk.gif"
+            player.lastElementChild.src = "../assets/images/"+character_name+"RightWalk.gif"
         }
     }
     walking = true

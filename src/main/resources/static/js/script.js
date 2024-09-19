@@ -1,7 +1,9 @@
 //Elements
 const battleScene = document.getElementById("pokeBattle")
+const transitionFrame = document.querySelector(".transitionFrame")
 
 //Character Creations
+const characterCells = document.querySelectorAll(".characterCell")
 const choicePokemonsBtns = document.querySelectorAll(".choicePok")
 
 //Ennemy menu & Player menu
@@ -42,6 +44,7 @@ const RUNBTN = optionBtnHolder.querySelector(".run")
 const powerInfo = document.getElementById("powerInfo")
 const typeInfo = document.getElementById("typeInfo")
 
+
 //Audios
 const mainMusic = document.getElementById("mainMusic")
 const encounterMusic = document.getElementById("encounterMusic")
@@ -56,6 +59,7 @@ const ENCOUNTER_ODDS = 100 //by default 100
 
 //VARIABLES
 let encounter = true
+let character_name = "Hilbert"
 
 
 
@@ -64,7 +68,7 @@ let encounter = true
 //Player
 const playerPokemon = {
     name:"",
-    number:577,
+    number:1,
     type:"",
     type2:"",
     hp:"",
@@ -585,15 +589,27 @@ function selectPokemon(element){
     })
     element.classList.add("selectedPok")
     playerPokemon.number = parseInt(element.getAttribute("data-pokenbr"))
-    console.log(playerPokemon.number)
 }
 
+function selectChar(element){
+    characterCells.forEach(function (button){
+        button.classList.remove("selectCharmodel")
+    })
+    element.classList.add("selectCharmodel")
+    character_name = element.getAttribute("data-charname")
+    player.lastElementChild.src = "../assets/images/"+character_name+"FrontWalk.png"
+}
 choicePokemonsBtns.forEach(function (button){
     button.addEventListener("click",function (){
         selectPokemon(button)
     })
 })
-const transitionFrame = document.querySelector(".transitionFrame")
+characterCells.forEach(function (button){
+    button.addEventListener("click",function (){
+        selectChar(button)
+    })
+})
+
 RUNBTN.addEventListener("click",()=>{
     run()
 })
@@ -635,16 +651,16 @@ let walking = false
 document.addEventListener("keyup", (e)=>{
 
     if (e.key==="w"){
-        player.lastElementChild.src = "../assets/images/frontIdle.png"
+        player.lastElementChild.src = "../assets/images/"+character_name+"FrontIdle.png"
     }
     if (e.key==="s"){
-        player.lastElementChild.src = "../assets/images/backIdle.png"
+        player.lastElementChild.src = "../assets/images/"+character_name+"BackIdle.png"
     }
     if (e.key==="a"){
-        player.lastElementChild.src = "../assets/images/leftIdle.png"
+        player.lastElementChild.src = "../assets/images/"+character_name+"LeftIdle.png"
     }
     if (e.key==="d"){
-        player.lastElementChild.src = "../assets/images/rightIdle.png"
+        player.lastElementChild.src = "../assets/images/"+character_name+"RightIdle.png"
     }
     walking = false
 })
