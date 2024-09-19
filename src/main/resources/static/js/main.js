@@ -60,7 +60,7 @@ function onPositionReceived(payload){
     }else{
         console.log("PLAYER: "+content.username+" POSITION: "+content.x+" | "+content.y)
         if (content.username !== user){
-            updatePlayerPosition(content.username,content.x,content.y,content.direction,content.walk)
+            updatePlayerPosition(content.username,content.x,content.y,content.sprite)
         }
     }
 }
@@ -168,8 +168,7 @@ function sendPosition(event) {
             username: user,
             x: posX,
             y: posY,
-            direction:direction,
-            walk: walking,
+            sprite: player.lastElementChild.src,
             type: 'MOVING'
         };
         stompClient.send(
@@ -219,8 +218,7 @@ function removePlayerFromGame(name){
         }
     })
 }
-function updatePlayerPosition(name,x,y,plrDirection,plrWalk){
-    console.log(plrWalk)
+function updatePlayerPosition(name,x,y,plrSrc){
     if (name === user) return
     checkIfPlayerExists(name)
     document.querySelectorAll(".playerCharSprite").forEach(function (playerSprite){
@@ -229,18 +227,7 @@ function updatePlayerPosition(name,x,y,plrDirection,plrWalk){
                 x:(-x)+offsetX,
                 y:(-y)+offsetY,
             })
-
-            let source = ""
-            if (plrDirection === "front") {
-                source = plrWalk ? "/assets/images/frontWalk.gif" : "/assets/images/frontIdle.png";
-            } else if (plrDirection === "back") {
-                source = plrWalk ? "/assets/images/backWalk.gif" : "/assets/images/backIdle.png";
-            } else if (plrDirection === "right") {
-                source = plrWalk ? "/assets/images/rightWalk.gif" : "/assets/images/rightIdle.png";
-            } else if (plrDirection === "left") {
-                source = plrWalk ? "/assets/images/leftWalk.gif" : "/assets/images/leftIdle.png";
-            }
-            playerSprite.lastElementChild.src = source
+            playerSprite.lastElementChild.src = plrSrc
 
         }
     })

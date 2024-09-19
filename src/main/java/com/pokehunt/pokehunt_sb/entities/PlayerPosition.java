@@ -12,7 +12,6 @@ public class PlayerPosition {
     String username;
     float x;
     float y;
-    String direction;
-    boolean walk;
+    String sprite;
     private MessageType type;
 }

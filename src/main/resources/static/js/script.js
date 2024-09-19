@@ -579,7 +579,6 @@ function shinyAppear(){
         shinySound.play()
     },DELAY+1*1000)
 }
-
 function selectPokemon(element){
     choicePokemonsBtns.forEach(function (button){
         button.classList.remove("selectedPok")
@@ -595,8 +594,6 @@ choicePokemonsBtns.forEach(function (button){
     })
 })
 const transitionFrame = document.querySelector(".transitionFrame")
-
-
 RUNBTN.addEventListener("click",()=>{
     run()
 })
@@ -607,10 +604,6 @@ backFightBtn.addEventListener("click",()=>{
     hideFightMenu()
 })
 
-
-
-
-// startEncounter()
 
 //Functions
 function getRandomInt(max) {
@@ -638,29 +631,22 @@ const player = document.getElementById("playerCharacterSprite")
 
 let SPEED = 15
 let walking = false
-let direction = "front"
 
 document.addEventListener("keyup", (e)=>{
 
     if (e.key==="w"){
-        direction="front"
         player.lastElementChild.src = "../assets/images/frontIdle.png"
     }
     if (e.key==="s"){
-        direction="back"
         player.lastElementChild.src = "../assets/images/backIdle.png"
     }
     if (e.key==="a"){
-        direction="left"
         player.lastElementChild.src = "../assets/images/leftIdle.png"
     }
     if (e.key==="d"){
-        direction="right"
         player.lastElementChild.src = "../assets/images/rightIdle.png"
     }
-    setTimeout(()=>{
-        walking = false
-    },500)
+    walking = false
 })
 
 
