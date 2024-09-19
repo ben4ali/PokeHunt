@@ -4,7 +4,8 @@ const userForm = document.querySelector(".userForm")
 let stompClient = null
 let user = null
 
-let offsetX,offsetY
+let offsetX = 0
+let offsetY = 0
 function connect(event){
     event.preventDefault();
     user = userForm.querySelector( "input").value
@@ -48,9 +49,7 @@ function onPositionReceived(payload){
     let content = JSON.parse(payload.body);
     if (content.type === 'JOIN'){
         console.log(content.username + " has joined.")
-        if (content.username !== user){
-            addPlayerToGame(content.username)
-        }
+        checkIfPlayerExists(content.username)
     }else if (content.type === 'LEAVE'){
         console.log(content.username + " has left.")
         if (content.username !== user){
@@ -69,7 +68,6 @@ function onError(){
 }
 
 userForm.addEventListener("submit",connect,true)
-// userForm.addEventListener("submit",sendMessage,true)
 document.addEventListener("keydown",sendPosition,true)
 function sendPosition(event) {
 
@@ -90,6 +88,7 @@ function sendPosition(event) {
         gsap.set(map.firstElementChild,{
             y: "+="+SPEED,
         })
+        offsetY+=SPEED
         if (walking==false){
             player.lastElementChild.src = "../assets/images/frontWalk.gif"
         }
@@ -107,6 +106,7 @@ function sendPosition(event) {
         gsap.set(map.firstElementChild,{
             y: "-="+SPEED,
         })
+        offsetY-=SPEED
         if (walking==false){
             player.lastElementChild.src = "../assets/images/backWalk.gif"
         }
@@ -121,10 +121,10 @@ function sendPosition(event) {
                 SPEED = 25
             }
         }
-
         gsap.set(map.firstElementChild,{
             x: "+="+SPEED,
         })
+        offsetX+=SPEED
         if (walking==false){
             player.lastElementChild.src = "../assets/images/leftWalk.gif"
         }
@@ -143,6 +143,7 @@ function sendPosition(event) {
         gsap.set(map.firstElementChild,{
             x: "-="+SPEED,
         })
+        offsetX-=SPEED
         if (walking==false){
             player.lastElementChild.src = "../assets/images/rightWalk.gif"
         }
@@ -223,8 +224,8 @@ function updatePlayerPosition(name,x,y,plrDirection,plrWalk){
     document.querySelectorAll(".playerCharSprite").forEach(function (playerSprite){
         if (playerSprite.getAttribute("data-name") === name){
             gsap.set(playerSprite,{
-                x:-x,
-                y:-y,
+                x:(-x)+offsetX,
+                y:(-y)+offsetY,
             })
 
             let source = ""
