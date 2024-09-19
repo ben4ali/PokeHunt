@@ -32,18 +32,34 @@ body{
 }
 
 /*------FORM INPUT------------*/
+.userCreation{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 12%;
+    gap: 1rem;
+}
 .userForm{
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 95vh;
     gap: 2rem;
 }
 .userForm p{
     font-size: 40px;
     margin: 0;
+    color: rgb(251, 251, 207);
+    text-shadow: 3px 3px #6c6b62b9;
+    letter-spacing: 3px;
+}
+.sectionTitle p{
+    font-size: 35px;
+    margin: 0;
+    margin-top: 1rem;
+
     color: rgb(251, 251, 207);
     text-shadow: 3px 3px #6c6b62b9;
     letter-spacing: 3px;
@@ -65,6 +81,51 @@ body{
     outline: none;
     width: 28rem;
     transition: 0.25s;
+}
+.pokemonChoiceHolder{
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+}
+.choicePok{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    width: 10rem;
+    height: 10rem;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    background-color: #47f3d9;
+    border-radius: 7px;
+    gap: 1rem;
+    box-shadow: 5px 5px 0 3px #3ddec6;
+}
+.choicePok p{
+    color: rgb(122, 118, 97);
+    font-size: 20px;
+    text-shadow: none;
+    font-size: 10;
+    letter-spacing: 2px;
+    margin: 0;
+}
+.choicePok img{
+    object-fit: cover;
+    height: 50%;
+    width: 50%;
+}
+.choicePok:hover{
+    box-shadow:0px 0px 0 3px #3ddec6;
+    transition: 0.1s;
+    transform: translate(5px,5px);
+}
+.selectedPok{
+    border: 5px solid #deea9b;
+    box-shadow:0px 0px 0 3px #3ddec6;
+    transition: 0.1s;
+    transform: translate(5px,5px);
 }
 
 /*------OVERWORLD SCENE-------*/

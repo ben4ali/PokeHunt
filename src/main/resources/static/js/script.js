@@ -1,6 +1,9 @@
 //Elements
 const battleScene = document.getElementById("pokeBattle")
 
+//Character Creations
+const choicePokemonsBtns = document.querySelectorAll(".choicePok")
+
 //Ennemy menu & Player menu
 const ennemyMenu = document.querySelector("#ennemyS .menu")
 const playermenu = document.querySelector("#playerS .menu")
@@ -61,7 +64,7 @@ let encounter = true
 //Player
 const playerPokemon = {
     name:"",
-    number:150,
+    number:577,
     type:"",
     type2:"",
     hp:"",
@@ -109,9 +112,6 @@ const POKEMON_TYPES_WEAKNESS_CHART = {
     "dark":["fighting","bug","fairy"],
     "fairy":["poison","steel"]
 }
-
-playerImg.src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/"+playerPokemon.number+".gif"
-
 
 
 function startEncounter(){
@@ -182,7 +182,6 @@ function startEncounter(){
         .then(response => response.json())
         .then(data => {
             playerPokemon.name = data.name
-
             playerPokemon.hp = data.stats[0].base_stat
             playerPokemon.type = data.types[0].type.name
             try {
@@ -217,7 +216,7 @@ function startEncounter(){
                         playerPokemon.movesData.push(fullData)
                     })
             }
-
+            playerImg.src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/"+playerPokemon.number+".gif"
             playerPkmName.textContent = toTitleCase(playerPokemon.name)
             console.log(playerPokemon)
         })
@@ -581,7 +580,20 @@ function shinyAppear(){
     },DELAY+1*1000)
 }
 
+function selectPokemon(element){
+    choicePokemonsBtns.forEach(function (button){
+        button.classList.remove("selectedPok")
+    })
+    element.classList.add("selectedPok")
+    playerPokemon.number = parseInt(element.getAttribute("data-pokenbr"))
+    console.log(playerPokemon.number)
+}
 
+choicePokemonsBtns.forEach(function (button){
+    button.addEventListener("click",function (){
+        selectPokemon(button)
+    })
+})
 const transitionFrame = document.querySelector(".transitionFrame")
 
 

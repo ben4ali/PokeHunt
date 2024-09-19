@@ -18,11 +18,32 @@
     <audio id="shinySound" src="/assets/audios/shiny_audi.mp3"></audio>
 
 
-    <!--Form user-->
-    <form class="userForm" action="">
-        <p>What's your name ?</p>
-        <input type="text" placeholder="Username">
-    </form>
+    <!--User creation-->
+    <div class="userCreation">
+        <!--Form user-->
+        <form class="userForm" action="">
+            <p>What's your name ?</p>
+            <input type="text" placeholder="Username">
+        </form>
+        <div class="sectionTitle">
+            <p>Choose a starter</p>
+        </div>
+        <div class="pokemonChoiceHolder">
+
+            <div class="selectedPok choicePok" data-pokenbr="1">
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/1.gif" alt="">
+                <p>BULBASAUR</p>
+            </div>
+            <div class="choicePok" data-pokenbr="4">
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/4.gif" alt="">
+                <p>CHARMANDER</p>
+            </div>
+            <div class="choicePok" data-pokenbr="7">
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/7.gif" alt="">
+                <p>SQUIRTLE</p>
+            </div>
+        </div>
+    </div>
 
     <!--TRANSITION FRAME-->
     <div class="transitionFrame">

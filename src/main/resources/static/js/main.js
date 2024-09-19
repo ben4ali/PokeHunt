@@ -28,10 +28,12 @@ function onConnected(){
         {},
         JSON.stringify({username:user, type:'JOIN'})
     );
-    gsap.to(userForm,{
+
+    gsap.to(".userCreation",{
         opacity: 0,
         duration:1.5,
         onComplete:()=>{
+            document.querySelector(".userCreation").style.display="none"
             userForm.style.display = "none"
             map.parentElement.style.display = "block"
             gsap.to(map.parentElement,{
