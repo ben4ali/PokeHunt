@@ -26,7 +26,7 @@ function onConnected(){
     //tell username to server
     stompClient.send('/app/player.addUser',
         {},
-        JSON.stringify({username:user, type:'JOIN'})
+        JSON.stringify({username:user, type:'JOIN',sprite:"../assets/images/"+character_name+"FrontIdle.png"})
     );
 
     gsap.to(".userCreation",{
@@ -51,7 +51,8 @@ function onPositionReceived(payload){
     let content = JSON.parse(payload.body);
     if (content.type === 'JOIN'){
         console.log(content.username + " has joined.")
-        checkIfPlayerExists(content.username)
+        console.log("**************************"+content.sprite+"*****************************")
+        checkIfPlayerExists(content.username,content.sprite)
     }else if (content.type === 'LEAVE'){
         console.log(content.username + " has left.")
         if (content.username !== user){
@@ -77,7 +78,7 @@ function sendPosition(event) {
     if (encounter || map.parentElement.style.display === "none"){
         return
     }
-    let moveDirection = "front"
+    let moveDirection = "none"
     if (event.key==="w"){
         moveDirection = "front"
         if (map.firstElementChild.style.transform.split(",")[1] != undefined){
@@ -158,8 +159,10 @@ function sendPosition(event) {
         transition()
     }
 
-
     //SOCKET
+    sendPayload()
+}
+function sendPayload(){
     let posX = parseInt(map.firstElementChild.style.transform.split(",")[0].split("px")[0].split("(")[1])
     let posY = parseInt(map.firstElementChild.style.transform.split(",")[1])
     if ( stompClient ){
@@ -182,31 +185,35 @@ function sendPosition(event) {
         console.log("Couldnt send position")
     }
 }
-
 let players = []
-function checkIfPlayerExists(name){
+function checkIfPlayerExists(name,sprite){
     if (players.includes(name)){
         return
     }else{
-        addPlayerToGame(name)
+        addPlayerToGame(name,sprite)
     }
 }
-function addPlayerToGame(name){
+function addPlayerToGame(name,sprite){
     players.push(name)
     if (name === user) return
+    console.log("-------------"+sprite+"----------------")
     let playerDivElement = document.createElement("div")
     playerDivElement.append(document.createElement("p"))
     playerDivElement.setAttribute("data-name",name)
     playerDivElement.firstElementChild.textContent = name
     playerDivElement.classList.add("playerCharSprite")
     let playerImgElement = document.createElement("img")
-    playerImgElement.src = "/assets/images/frontIdle.png"
     gsap.set(playerImgElement,{
         x:0,
         y:0
     })
     playerDivElement.append(playerImgElement)
     map.append(playerDivElement)
+    gsap.set(playerDivElement,{
+        x:0,
+        y:0,
+    })
+    playerImgElement.src = sprite
 }
 function removePlayerFromGame(name){
     const index = players.indexOf(name)
@@ -220,7 +227,7 @@ function removePlayerFromGame(name){
 }
 function updatePlayerPosition(name,x,y,plrSrc){
     if (name === user) return
-    checkIfPlayerExists(name)
+    checkIfPlayerExists(name,plrSrc)
     document.querySelectorAll(".playerCharSprite").forEach(function (playerSprite){
         if (playerSprite.getAttribute("data-name") === name){
             gsap.set(playerSprite,{
@@ -234,7 +241,7 @@ function updatePlayerPosition(name,x,y,plrSrc){
 }
 
 function moveOtherPlayers(direction){
-    console.log(direction)
+    if (direction==="none"){return}
     document.querySelectorAll(".playerCharSprite").forEach(function (playerSprite){
         if (playerSprite.getAttribute("data-name") !== user){
             let moveRule

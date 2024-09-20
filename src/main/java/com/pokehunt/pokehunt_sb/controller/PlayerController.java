@@ -20,6 +20,7 @@ public class PlayerController {
     @SendTo("/topic/public")
     public PlayerPosition addPlayer(@Payload PlayerPosition player, SimpMessageHeaderAccessor headerAccessor){
         headerAccessor.getSessionAttributes().put("username", player.getUsername());
+        headerAccessor.getSessionAttributes().put("sprite", player.getSprite());
         return player;
     }
 

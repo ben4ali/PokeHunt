@@ -55,7 +55,7 @@ const POKEMONS_MAX = 649
 const DURATION = 1
 const DELAY = 0.1
 const SHINY_ODDS = 2
-const ENCOUNTER_ODDS = 100 //by default 100
+const ENCOUNTER_ODDS = 300
 
 //VARIABLES
 let encounter = true
@@ -662,6 +662,7 @@ document.addEventListener("keyup", (e)=>{
     if (e.key==="d"){
         player.lastElementChild.src = "../assets/images/"+character_name+"RightIdle.png"
     }
+    sendPayload()
     walking = false
 })
 
