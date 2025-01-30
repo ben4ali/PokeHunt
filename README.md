@@ -14,6 +14,15 @@ PokeHunt is a browser-based Pokémon game where you can explore, encounter rando
 - **Pokédex progression**
 - **And more...**
 
+## Preview
+
+Here are some previews of the game:
+
+![Shiny encounter](./previews/preview2.gif)
+![Character creation](./previews/preview1.png)
+![Encounter](./previews/preview4.png)
+![Multiplayer](./previews/preview3.gif)
+
 ## Technologies
 
 - **Frontend**: HTML, CSS, JavaScript
